@@ -87,8 +87,9 @@ body{
 
 /* Hero (hero_img.png 한 장으로 구성) */
 .hero{
-  background: #eef2ee;              /* 시안 상단의 연한 배경 느낌 */
-  padding: 28px 0 34px;
+  height: calc(100vh - 72px);
+  min-height: 520px;
+  background: url("./images/hero_img.png") center bottom / cover no-repeat;
   border-bottom: 10px solid #2b2f39;
 }
 
@@ -99,7 +100,7 @@ body{
 }
 
 .hero-img{
-  width: min(920px, 100%);
+  width: min(720px, 100%);
   height: auto;
   display:block;
   box-shadow: 0 14px 40px rgba(0,0,0,.18);
