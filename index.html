@@ -188,6 +188,50 @@
     </div>
   </footer>
 
+  <!-- Active nav by scroll (현재 섹션 굵고 검정 강조) -->
+  <script>
+    (function () {
+      const header = document.querySelector(".site-header");
+      const links = Array.from(document.querySelectorAll("[data-nav]"));
+      const sections = Array.from(document.querySelectorAll("[data-section]"));
 
+      const getHeaderH = () => header ? header.getBoundingClientRect().height : 0;
+
+      // 클릭 시: 헤더 높이만큼 보정해서 부드럽게 이동
+      links.forEach(a => {
+        a.addEventListener("click", (e) => {
+          const hash = a.getAttribute("href");
+          if (!hash || !hash.startsWith("#")) return;
+          const target = document.querySelector(hash);
+          if (!target) return;
+
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - getHeaderH();
+          history.pushState(null, "", hash);
+          window.scrollTo({ top, behavior: "smooth" });
+        });
+      });
+
+      const setActive = (hash) => {
+        links.forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === hash));
+      };
+
+      const io = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible && visible.target && visible.target.id) {
+          setActive("#" + visible.target.id);
+        }
+      }, {
+        threshold: [0.25, 0.45, 0.6],
+        rootMargin: `-${Math.round(getHeaderH())}px 0px -55% 0px`
+      });
+
+      sections.forEach(sec => io.observe(sec));
+      setActive(location.hash || "#home");
+    })();
+  </script>
 </body>
 </html>
