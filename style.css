@@ -4,11 +4,12 @@
 
 :root{
   --bg-dark: #1f232b;
-  --panel-dark: #2a2f39;
+  --panel: rgba(255,255,255,.06);
   --text: #e9edf3;
   --muted: rgba(233,237,243,.65);
   --line: rgba(255,255,255,.10);
   --shadow: 0 18px 50px rgba(0,0,0,.35);
+  --dot-on: #f5e86c;
 }
 
 *{ box-sizing:border-box; }
@@ -25,8 +26,9 @@ body{
 }
 
 .container{
-  width:min(1080px, calc(100% - 56px));
+  max-width: 1080px;
   margin:0 auto;
+  padding: 0 28px;
 }
 
 /* Sticky Header */
@@ -37,33 +39,17 @@ body{
   background:#fff;
   border-bottom: 1px solid #f0f0f0;
 }
-
 .header-inner{
   height: 72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
-
-.brand{
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-}
-
-.brand-logo{
-  height: 34px;
-  width: auto;
-  display:block;
-}
+.brand{ text-decoration:none; display:flex; align-items:center; }
+.brand-logo{ height: 34px; width:auto; display:block; }
 
 /* Nav */
-.gnb{
-  display:flex;
-  gap: 28px;
-  align-items:center;
-}
-
+.gnb{ display:flex; gap: 28px; align-items:center; }
 .gnb-link{
   text-decoration:none;
   font-size: 13px;
@@ -73,93 +59,76 @@ body{
   transition: color .15s ease, font-weight .15s ease;
 }
 .gnb-link:hover{ color:#3b3b3b; }
+.gnb-link.is-active{ color:#111; font-weight: 900; }
 
-/* 현재 페이지 강조: 굵고 검정 */
-.gnb-link.is-active{
-  color:#111;
-  font-weight: 900;
-}
+/* anchor 보정 */
+#home, #about, #project{ scroll-margin-top: 84px; }
 
-/* 앵커 이동 시 헤더에 가리지 않게 */
-#home, #about, #project{
-  scroll-margin-top: 84px;
-}
-
-/* Hero: 화면 꽉 채우기 + 다음 섹션과 겹침 방지 */
+/* Hero (PDF처럼 꽉 차게) */
 .hero{
   position: relative;
-  height: calc(100vh - 72px);  /* sticky 헤더 제외 */
-  min-height: 520px;
+  height: clamp(560px, 90vh, 820px);
   overflow: hidden;
-  border-bottom: 10px solid #2b2f39;
   background: #eef2ee;
-  isolation: isolate;          /* z-index 꼬임 방지 */
 }
-
 .hero-cover{
-  position: absolute;          /* fixed 절대 금지 */
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
   object-fit: cover;
-  object-position: center bottom;  /* 캐릭터 아래 살리기 */
-  z-index: 0;
+  object-position: center bottom;
 }
 
-/* 다음 섹션이 hero 위로 올라타지 않게 안전장치 */
+/* Sections */
 .section{
   position: relative;
-  z-index: 1;
+  padding: 72px 0 90px;
 }
-
 .section-dark{
   background: var(--bg-dark);
   color: var(--text);
 }
 
 .section-title{
-  margin: 0 0 28px;
+  margin: 0 0 44px;
   text-align:center;
-  font-weight: 500;
-  letter-spacing: .14em;
-  color: rgba(233,237,243,.6);
+  font-weight: 400;
+  letter-spacing: .16em;
+  color: rgba(233,237,243,.55);
+  font-size: 28px;
 }
 
-/* ABOUT layout */
+/* ABOUT layout (PDF: 프로필 + 카드) */
 .about-grid{
   display:grid;
   grid-template-columns: 320px 1fr;
-  gap: 30px;
+  gap: 44px;
   align-items:start;
+  margin-bottom: 42px; /* skills랑 간격 */
 }
 
 /* Profile */
-.profile{
-  padding-top: 6px;
-}
-
+.profile{ padding-top: 6px; }
 .profile-avatar{
-  width: 190px;
-  height: 190px;
+  width: 200px;
+  height: 200px;
   border-radius: 999px;
   overflow:hidden;
-  margin: 0 auto 14px;
+  margin: 0 auto 18px;
   box-shadow: 0 14px 40px rgba(0,0,0,.22);
   border: none;
 }
-
 .profile-avatar img{
   width:100%;
   height:100%;
   object-fit: cover;
   display:block;
 }
-
 .profile-name{
   text-align:center;
-  margin: 8px 0 10px;
+  margin: 10px 0 14px;
 }
 .profile-last{
   margin:0;
@@ -169,36 +138,32 @@ body{
   font-weight: 700;
 }
 .profile-first{
-  margin:6px 0 0;
-  font-size: 18px;
+  margin:8px 0 0;
+  font-size: 22px;
   letter-spacing: .10em;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .profile-meta{
   list-style:none;
   padding:0;
-  margin: 18px 0 0;
+  margin: 22px 0 0;
   display:grid;
   gap: 12px;
   font-size: 13px;
-  color: rgba(233,237,243,.80);
+  color: rgba(233,237,243,.82);
 }
-
 .profile-meta li{
   display:flex;
   gap: 10px;
   align-items:center;
 }
-
 .meta-icon{
   width: 18px;
   height: 18px;
   display:block;
   flex: 0 0 18px;
-  filter: brightness(1.2);
 }
-
 .meta-link{
   color: rgba(233,237,243,.82);
   text-decoration: none;
@@ -209,60 +174,49 @@ body{
   text-decoration: underline;
 }
 
-/* about-me 스타일*/
+/* About-me (PDF page3 카드 느낌: 어두운 카드 + 은은한 컬러) */
 .about-me{
-  display: flex;
-  padding: 60px;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
   border-radius: 20px;
-  background: radial-gradient(
-    194.43% 153.97% at 5.9% 13.45%,
-    rgba(247, 247, 106, 0.30) 0%,
-    rgba(188, 255, 243, 0.30) 36.54%,
-    rgba(255, 192, 97, 0.30) 74.04%,
-    rgba(206, 155, 210, 0.30) 100%
-  );
-  border: 1px solid rgba(255,255,255,.14);
+  padding: 44px 48px;
+  background:
+    radial-gradient(130% 120% at 15% 10%, rgba(247,247,106,.18) 0%, rgba(0,0,0,0) 60%),
+    radial-gradient(130% 120% at 85% 30%, rgba(188,255,243,.12) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.12);
   box-shadow: var(--shadow);
 }
-
 .about-title{
-  margin: 0 0 14px;
-  font-size: 18px;
-  font-weight: 800;
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 900;
   color: rgba(255,255,255,.95);
 }
-
 .about-quote{
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   color: rgba(255,255,255,.92);
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.about-desc{
-  margin: 0 0 14px;
-  color: rgba(255,255,255,.85);
   font-size: 13px;
   line-height: 1.8;
 }
+.about-desc{
+  margin: 0 0 16px;
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  line-height: 1.85;
+}
 
-/* Skills */
+/* Skills (PDF: 한 줄 4칸, 크기 키움) */
 .skills{
-  margin-top: 28px;
   display:grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 26px;
+  gap: 44px;
   align-items:end;
 }
 
 .skill-name{
   margin:0 0 12px;
   font-size: 14px;
-  color: rgba(233,237,243,.88);
-  font-weight: 700;
+  color: rgba(233,237,243,.9);
+  font-weight: 800;
 }
 
 .dots{ display:flex; gap: 10px; }
@@ -270,52 +224,33 @@ body{
   width: 14px;
   height: 14px;
   border-radius: 999px;
-  background: rgba(255,255,255,.20);
-  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.10);
 }
 .dot.is-on{
-  background: #f5e86c;
+  background: var(--dot-on);
   border-color: rgba(0,0,0,0);
 }
 
-
-/* Goals (3 cards) */
+/* Goals (PDF page3: 카드 3개 동일 폭/높이 안정화) */
 .goals{
-  margin-top: 26px;
+  margin-top: 38px;
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 22px;
 }
 
-/* 너 가이드 그대로 */
 .goal{
-  display: flex;
-  padding: 20px;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  border-radius: 20px;
-
-  background: radial-gradient(
-    194.43% 153.97% at 5.9% 13.45%,
-    rgba(247, 247, 106, 0.12) 0%,
-    rgba(188, 255, 243, 0.12) 36.54%,
-    rgba(255, 192, 97, 0.12) 74.04%,
-    rgba(206, 155, 210, 0.12) 100%
-  );
-
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: var(--shadow);
   overflow:hidden;
 }
 
 .goal-media{
-  width: 100%;
-  height: 190px;
-  border-radius: 16px;
+  height: 240px;             /* PDF 비율에 맞게 */
   overflow:hidden;
-  background: rgba(0,0,0,.25);
-  border: 1px solid rgba(255,255,255,.10);
 }
 .goal-media img{
   width:100%;
@@ -325,109 +260,97 @@ body{
 }
 
 .goal-body{
-  width:100%;
-  text-align: left; /* 시안이 왼쪽 정렬이면 left 유지 */
+  padding: 18px 18px 22px;
 }
-
-/* 글자 컬러/계층 재정렬 */
 .goal-kicker{
-  display:block;
-  font-size: 13px;
-  font-weight: 800;
-  color: rgba(247, 247, 106, 0.95); /* 노란 포인트 */
-  margin-bottom: 6px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(247, 247, 106, 0.95);
 }
-
 .goal-head{
-  display:block;
-  font-size: 18px;
+  margin: 0 0 14px;
+  font-size: 16px;
   font-weight: 900;
   color: rgba(233,237,243,.95);
-  letter-spacing: -0.02em;
-  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
 
 .goal-list{
   margin:0;
   padding-left: 16px;
-  color: rgba(233,237,243,.80);
-  font-size: 13px;
-  line-height: 1.75;
+  color: rgba(233,237,243,.78);
+  font-size: 12.5px;
+  line-height: 1.8;
 }
 .goal-text{
   margin:0;
-  color: rgba(233,237,243,.80);
-  font-size: 13px;
-  line-height: 1.75;
+  color: rgba(233,237,243,.78);
+  font-size: 12.5px;
+  line-height: 1.8;
 }
 
 /* PROJECT */
 .project-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap: 42px;
+  gap: 52px;
   align-items:start;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
-.project-card{
-  text-align:center;
-}
-
+.project-card{ text-align:center; }
 .project-media{
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
   border-radius: 16px;
-  padding: 18px;
+  padding: 22px;
   box-shadow: var(--shadow);
 }
-
 .project-media img{
   width: 100%;
   height: auto;
   display:block;
-  border-radius: 10px;
+  border-radius: 12px;
 }
-
 .project-name{
-  margin: 14px 0 6px;
+  margin: 16px 0 8px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
 }
-
 .project-desc{
   margin:0;
   font-size: 12px;
-  color: rgba(233,237,243,.65);
+  color: rgba(233,237,243,.60);
 }
 
 /* Case blocks */
 .case{
-  margin-top: 56px;
+  margin-top: 62px;
   text-align:center;
 }
 .case-title{
-  margin: 0 0 16px;
-  letter-spacing: .10em;
-  font-weight: 800;
+  margin: 0 0 18px;
+  letter-spacing: .12em;
+  font-weight: 900;
   font-size: 13px;
-  color: rgba(233,237,243,.9);
+  color: rgba(233,237,243,.92);
 }
 .case-media{
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 10px;
-  padding: 14px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: 18px;
   box-shadow: var(--shadow);
 }
 .case-media img{
   width: 100%;
   height: auto;
   display:block;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 .case-caption{
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   color: rgba(233,237,243,.55);
   font-size: 12px;
 }
@@ -445,24 +368,20 @@ body{
 }
 
 /* Responsive */
-@media (max-width: 720px){
-  .about-grid{ grid-template-columns: 1fr; 
-               gap: 48px;
-             }
+@media (max-width: 900px){
+  .skills{ grid-template-columns: repeat(2, 1fr); gap: 26px; }
   .goals{ grid-template-columns: 1fr; }
   .project-grid{ grid-template-columns: 1fr; gap: 28px; }
-  .about-me{ padding: 28px;
-             max-width: 760px
-           }
 }
-  .hero-outline{ font-size: 38px; }
-  .hero-bold{ font-size: 36px; }
+
+@media (max-width: 760px){
+  .about-grid{ grid-template-columns: 1fr; gap: 26px; }
+  .about-me{ padding: 28px; }
 }
 
 @media (max-width: 560px){
-  .container{
-    width: min(1080px, calc(100% - 32px));
-  }
+  .container{ padding: 0 18px; }
   .gnb{ gap: 16px; }
   .brand-logo{ height: 30px; }
+  .section-title{ font-size: 22px; margin-bottom: 30px; }
 }
