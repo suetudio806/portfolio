@@ -1,129 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>백꼬막 - 디자이너 포트폴리오</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PORTFOLIO</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="꼬막로고"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#project">Project</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <img class="brand-logo" src="./images/logo.png" alt="PORTFOLIO 로고" />
+      </a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <img src="images/cat-hero.png" alt="고양이 백꼬막">
-        <div class="hero-text">
-            <p>디자이너</p>
-            <p>백꼬막 입니다.</p>
-        </div>
-    </section>
+      <nav class="gnb font-gmarket" aria-label="Primary Navigation">
+        <a class="gnb-link is-active" data-nav href="#home">HOME</a>
+        <a class="gnb-link" data-nav href="#about">ABOUT</a>
+        <a class="gnb-link" data-nav href="#project">PROJECT</a>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Hero -->
+  <main id="home" class="hero" data-section>
+    <div class="hero-bg" aria-hidden="true">
+      <img src="./images/hero_img.png" alt="" />
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About</h2>
-        <p class="about-intro">
-            사용자의 경험을 최우선으로 생각하며, 아름다움과 가독성이 조화를 이루는 디자인을 추구합니다. 
-            지속적인 학습과 도전을 통해 더 나은 디자이너로 성장하고 있습니다.
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="hero-line hero-outline">안녕하세요!</p>
+        <p class="hero-line hero-outline">
+          제 이름은 <strong class="hero-strong">최의승</strong> 입니다.
         </p>
-        
-        <div class="about-details">
-            <section class="about-card">
-                <h3>Education</h3>
-                <ul>
-                    <li>디자인학 학사</li>
-                    <li>UX/UI 전문 과정 수료</li>
-                    <li>컴퓨터공학 디자인 복수전공</li>
-                </ul>
-            </section>
+        <p class="hero-line hero-bold">소통하는 디자이너가 되고 싶어요.</p>
+      </div>
+    </div>
+  </main>
 
-            <section class="about-card">
-                <h3>Activity</h3>
-                <ul>
-                    <li>디자인 커뮤니티 운영진</li>
-                    <li>디자인 세미나 발표</li>
-                    <li>오즈코딩스쿨 7기 아웃풋</li>
-                </ul>
-            </section>
+  <!-- ABOUT -->
+  <section id="about" class="section section-dark" data-section>
+    <div class="container">
+      <h2 class="section-title font-gmarket">ABOUT</h2>
 
-            <section class="about-card">
-                <h3>License</h3>
-                <ul>
-                    <li>컴퓨터그래픽스운용기능사</li>
-                    <li>웹디자인기능사</li>
-                    <li>컬러리스트 1급</li>
-                </ul>
-            </section>
+      <div class="about-grid">
+        <!-- Profile -->
+        <aside class="profile">
+          <div class="profile-avatar">
+            <img src="./images/profile_img.png" alt="프로필 이미지" />
+          </div>
 
-            <section class="about-card">
-                <h3>Skill</h3>
-                <ul>
-                    <li>Figma, Sketch</li>
-                    <li>Adobe Creative Suite</li>
-                    <li>Adobe Creative Suite</li>
-                </ul>
-            </section>
+          <div class="profile-name font-gmarket">
+            <p class="profile-last">CHOI</p>
+            <p class="profile-first">EUI SEUNG</p>
+          </div>
+
+          <ul class="profile-meta">
+            <li><span class="meta-ico" aria-hidden="true">🔗</span><span class="meta-text">blog.naver.com/suetudio</span></li>
+            <li><span class="meta-ico" aria-hidden="true">✉️</span><span class="meta-text">suetudio6@gmail.com</span></li>
+            <li><span class="meta-ico" aria-hidden="true">📍</span><span class="meta-text">Jung-gu, Seoul, Korea</span></li>
+          </ul>
+        </aside>
+
+        <!-- About-me (요구 스타일 반영) -->
+        <article class="about-me">
+          <h3 class="about-title">문제 해결 중심의 ‘감각적 서포터’</h3>
+
+          <p class="about-quote">
+            "보이지 않는 문제를 빠르게 감지하고,<br />
+            유연하게 최적의 해답을 찾아내는 해결사입니다."
+          </p>
+
+          <p class="about-desc">
+            프로젝트 초기에 방향성이 어긋나거나 분위기가 흐트러지는 미세한 지점을 잘 캐치합니다.
+            단순한 감에 의존하지 않고 이를 팀이 납득할 수 있는 언어로 설명하여 전체 결과물의 안정감을 높이는 역할을 합니다.
+          </p>
+
+          <p class="about-desc">
+            또한 스스로에 대한 엄격한 피드백을 바탕으로 작업 방식을 꾸준히 개선해 왔습니다.
+            불필요한 공력을 쏟던 습관을 버리고 효율적인 우선순위 분배를 실천한 결과, 팀의 속도감 있는 흐름을 해치지 않으면서도
+            저만의 강점인 섬세함을 적재적소에 녹여내고 있습니다. 문제를 감지하는 감각과 이를 해결하는 속도의 균형을 통해
+            팀 프로젝트의 완성도를 꾸준히 상향 평준화합니다.
+          </p>
+        </article>
+      </div>
+
+      <!-- Goals -->
+      <section class="goals" aria-label="Goals">
+        <article class="goal">
+          <div class="goal-media">
+            <img src="./images/card_img1.jpg" alt="관찰과 구조 이미지" />
+          </div>
+          <div class="goal-body">
+            <h3 class="goal-title">
+              <span class="goal-kicker">관찰과 구조</span>
+              <span class="goal-head">날카로운 ‘매의 눈’ 갖기</span>
+            </h3>
+            <ul class="goal-list">
+              <li>전체적 구조 파악하기</li>
+              <li>예쁜 화면보다 “이 디자인이 목적에 맞는지" 확인하기</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="goal">
+          <div class="goal-media">
+            <img src="./images/card_img2.jpg" alt="논리와 데이터 이미지" />
+          </div>
+          <div class="goal-body">
+            <h3 class="goal-title">
+              <span class="goal-kicker">논리와 데이터</span>
+              <span class="goal-head">데이터로 설득력 더하기</span>
+            </h3>
+            <p class="goal-text">
+              감이 아닌 근거로, 우선순위를 수치와 기준으로 정리한 뒤, 데이터를 기반으로 합의된 디자인을 목표로 합니다
+            </p>
+          </div>
+        </article>
+
+        <article class="goal">
+          <div class="goal-media">
+            <img src="./images/card_img3.jpg" alt="팀과 시스템 이미지" />
+          </div>
+          <div class="goal-body">
+            <h3 class="goal-title">
+              <span class="goal-kicker">팀과 시스템</span>
+              <span class="goal-head">나만의 감각을 팀 시스템으로</span>
+            </h3>
+            <ul class="goal-list">
+              <li>기준을 문서와 시스템으로 만듭니다</li>
+              <li>피드백을 빠르게 반영합니다</li>
+              <li>팀 전체의 효율을 높이는 디자이너</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project" class="section section-dark" data-section>
+    <div class="container">
+      <h2 class="section-title font-gmarket">PROJECT</h2>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-media">
+            <img src="./images/suetudio_img.png" alt="Suetudio 프로젝트 이미지" />
+          </div>
+          <h3 class="project-name font-gmarket">Suetudio</h3>
+          <p class="project-desc">퍼스널 브랜드 기획/디자인</p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img src="./images/Loop_img.png" alt="Loop 프로젝트 이미지" />
+          </div>
+          <h3 class="project-name font-gmarket">Loop</h3>
+          <p class="project-desc">스트릿 패션 중고 거래 플랫폼 기획</p>
+        </article>
+      </div>
+
+      <section class="case">
+        <h3 class="case-title font-gmarket">MUSINSA APP</h3>
+        <div class="case-media">
+          <img src="./images/musinsa_img.png" alt="MUSINSA 프로젝트 이미지" />
         </div>
-    </section>
+        <p class="case-caption">리서치 및 데이터 기반 UX 동향 조사</p>
+      </section>
 
-    <!-- Project Section -->
-    <section id="project" class="project">
-        <h2>Project</h2>
-        
-        <div class="project-container">
-            <section class="project-item">
-                <figure>
-                    <img src="images/project1.png" alt="여행앱 개선 디자인 프로젝트">
-                    <figcaption>여행앱 개선 디자인 프로젝트</figcaption>
-                </figure>
-            </section>
-
-            <section class="project-item">
-                <figure>
-                    <img src="images/project2.png" alt="여행 웹페이지 계산 디자인 프로젝트">
-                    <figcaption>여행 웹페이지 계산 디자인 프로젝트</figcaption>
-                </figure>
-            </section>
+      <section class="case">
+        <h3 class="case-title font-gmarket">SOUND CLOUD APP</h3>
+        <div class="case-media">
+          <img src="./images/soundcloud_img.png" alt="SoundCloud 프로젝트 이미지" />
         </div>
-    </section>
+        <p class="case-caption">UX 리서치 기반 서비스 UI 개선 프로젝트</p>
+      </section>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        
-        <div class="contact-container">
-            <section class="contact-item">
-                <h3>블로그</h3>
-                <ul>
-                    <li><a href="https://mint-ssam.tistory.com">https://mint-ssam.tistory.com</a></li>
-                </ul>
-            </section>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2025 Suetudio. All rights reserved.</p>
+    </div>
+  </footer>
 
-            <section class="contact-item">
-                <h3>이메일</h3>
-                <ul>
-                    <li><a href="mailto:designermintsaam@gmail.com">designermintsaam@gmail.com</a></li>
-                </ul>
-            </section>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; Mint all rights reserved.</p>
-    </footer>
 </body>
 </html>
