@@ -178,19 +178,36 @@ body{
 .profile-meta{
   list-style:none;
   padding:0;
-  margin: 16px 0 0;
+  margin: 18px 0 0;
   display:grid;
-  gap: 10px;
-  color: rgba(233,237,243,.75);
-  font-size: 12px;
+  gap: 12px;
+  font-size: 13px;
+  color: rgba(233,237,243,.80);
 }
+
 .profile-meta li{
   display:flex;
   gap: 10px;
-  align-items:flex-start;
+  align-items:center;
 }
-.meta-ico{ width: 18px; opacity:.9; }
-.meta-text{ line-height: 1.4; }
+
+.meta-icon{
+  width: 18px;
+  height: 18px;
+  display:block;
+  flex: 0 0 18px;
+  filter: brightness(1.2);
+}
+
+.meta-link{
+  color: rgba(233,237,243,.82);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.meta-link:hover{
+  color: rgba(233,237,243,1);
+  text-decoration: underline;
+}
 
 /* about-me 스타일*/
 .about-me{
@@ -234,30 +251,30 @@ body{
 
 /* Skills */
 .skills{
-  margin-top: 24px;
+  margin-top: 28px;
   display:grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  align-items:center;
+  gap: 26px;
+  align-items:end;
 }
 
 .skill-name{
-  margin:0 0 8px;
-  font-size: 12px;
-  color: rgba(233,237,243,.85);
+  margin:0 0 12px;
+  font-size: 14px;
+  color: rgba(233,237,243,.88);
   font-weight: 700;
 }
 
-.dots{ display:flex; gap: 8px; }
+.dots{ display:flex; gap: 10px; }
 .dot{
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
-  background: rgba(255,255,255,.25);
-  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.20);
+  border: 1px solid rgba(255,255,255,.12);
 }
 .dot.is-on{
-  background: #f6e27a;
+  background: #f5e86c;
   border-color: rgba(0,0,0,0);
 }
 
@@ -270,14 +287,15 @@ body{
   gap: 18px;
 }
 
+/* 너 가이드 그대로 */
 .goal{
-  /* goal 스타일(너가 준 값 반영) */
   display: flex;
   padding: 20px;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   border-radius: 20px;
+
   background: radial-gradient(
     194.43% 153.97% at 5.9% 13.45%,
     rgba(247, 247, 106, 0.12) 0%,
@@ -293,8 +311,8 @@ body{
 
 .goal-media{
   width: 100%;
-  height: 170px;
-  border-radius: 14px;
+  height: 190px;
+  border-radius: 16px;
   overflow:hidden;
   background: rgba(0,0,0,.25);
   border: 1px solid rgba(255,255,255,.10);
@@ -308,38 +326,38 @@ body{
 
 .goal-body{
   width:100%;
-  text-align:left;
+  text-align: left; /* 시안이 왼쪽 정렬이면 left 유지 */
 }
 
-.goal-title{
-  margin: 0 0 10px;
-  line-height: 1.35;
-}
+/* 글자 컬러/계층 재정렬 */
 .goal-kicker{
   display:block;
   font-size: 13px;
   font-weight: 800;
-  color: rgba(255,255,255,.92);
+  color: rgba(247, 247, 106, 0.95); /* 노란 포인트 */
+  margin-bottom: 6px;
 }
+
 .goal-head{
   display:block;
-  margin-top: 4px;
-  font-size: 14px;
-  font-weight: 800;
-  color: rgba(255,255,255,.92);
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(233,237,243,.95);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
 }
 
 .goal-list{
   margin:0;
   padding-left: 16px;
-  color: rgba(233,237,243,.78);
-  font-size: 12.5px;
+  color: rgba(233,237,243,.80);
+  font-size: 13px;
   line-height: 1.75;
 }
 .goal-text{
   margin:0;
-  color: rgba(233,237,243,.78);
-  font-size: 12.5px;
+  color: rgba(233,237,243,.80);
+  font-size: 13px;
   line-height: 1.75;
 }
 
@@ -428,10 +446,14 @@ body{
 
 /* Responsive */
 @media (max-width: 720px){
-  .about-grid{ grid-template-columns: 1fr; }
+  .about-grid{ grid-template-columns: 1fr; 
+               gap: 48px;
+             }
   .goals{ grid-template-columns: 1fr; }
   .project-grid{ grid-template-columns: 1fr; gap: 28px; }
-  .about-me{ padding: 28px; }
+  .about-me{ padding: 28px;
+             max-width: 760px
+           }
 }
   .hero-outline{ font-size: 38px; }
   .hero-bold{ font-size: 36px; }
